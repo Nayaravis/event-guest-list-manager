@@ -8,18 +8,18 @@
 </head>
 <body class="flex items-center p-7 justify-center">
     <div class="content-container w-4xl flex justify-center items-center">
-        <div class=" pt-4 border-1 border-gray-300 rounded-xl bg-white w-full">
-            <div class="px-6 pb-2.5">
+        <div class=" pt-4 border-1 border-gray-300 rounded-xl bg-white w-full overflow-hidden">
+            <div class="px-6 pb-2.5 sticky">
                 <div class="py-4 text-2xl font-bold">
                     <span>Add Guest</span>
                 </div>
                 <div class="w-full h-fit flex justify-around gap-2.5">
-                    <div class="flex gap-3.5 w-full">
+                    <form class="flex gap-3.5 w-full" id="guest-form">
                         <input type="text" placeholder="Guest Name" class="p-2 border-1 border-gray-300 outline-gray-300 rounded-lg w-full" id="name-field">
                         <input type="text" placeholder="Email" class="p-2 border-1 border-gray-300 outline-gray-300 rounded-lg w-full" id="email-field">
-                    </div>
+                    </form>
                     <div class="flex flex-col justify-center items-center">
-                        <input type="button" value="Add" class="py-2 px-4 bg-blue-500 rounded-lg text-white" id="submit-button">
+                        <input type="submit" value="Add" class="py-2 px-4 bg-blue-500 rounded-lg text-white" id="submit-button">
                     </div>
                 </div>
             </div>
