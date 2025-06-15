@@ -3,10 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Guest List Manager</title>
     <link rel="stylesheet" href="./styles/output.css">
 </head>
-<body>
-    
+<body class="flex items-center w-screen h-screen justify-center">
+    <div class="content-container w-4xl px-3.5 h-full flex justify-center items-center">
+        <div class=" pt-4 border-1 border-gray-300 rounded-xl bg-white w-full">
+            <div class="px-6 pb-2.5">
+                <div class="py-4 text-2xl font-bold">
+                    <span>Add Guest</span>
+                </div>
+                <div class="w-full h-fit flex justify-around gap-2.5">
+                    <div class="flex gap-3.5 w-full">
+                        <input type="text" placeholder="Guest Name" class="p-2 border-1 border-gray-300 outline-gray-300 rounded-lg w-full" id="name-field">
+                        <input type="text" placeholder="Email" class="p-2 border-1 border-gray-300 outline-gray-300 rounded-lg w-full" id="email-field">
+                    </div>
+                    <div class="flex flex-col justify-center items-center">
+                        <input type="button" value="Add" class="py-2 px-4 bg-blue-500 rounded-lg text-white" id="submit-button">
+                    </div>
+                </div>
+            </div>
+            <hr class="border-gray-300">
+            <div id="guest-list">
+                
+            </div>
+        </div>
+    </div>
+    <script src="./src/index.js"></script>
 </body>
 </html>
