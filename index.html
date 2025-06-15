@@ -9,8 +9,31 @@
 <body class="flex items-center p-7 justify-center">
     <div class="content-container w-4xl flex justify-center items-center">
         <div class=" pt-4 border-1 border-gray-300 rounded-xl bg-white w-full overflow-hidden">
-            <div class="px-6 pb-2.5 sticky">
-                <div class="py-4 text-2xl font-bold">
+            <div>
+                <div class="px-6 py-4 text-2xl font-bold">
+                    <input id="list-title" type="text" value="Guest List" class="p-2 border-2 border-gray-300 rounded-xl">
+                </div>
+                <div class="flex justify-around">
+                    <div class="flex flex-col items-center">
+                        <span id="total-guests" class="text-2xl font-bold text-gray-900"></span>
+                        <span>Total</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span id="attending-guests" class="text-2xl font-bold text-green-600"></span>
+                        <span>Attending</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span id="declined-guests" class="text-2xl font-bold text-red-600"></span>
+                        <span>Not attending</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span id="pending-guests" class="text-2xl font-bold text-amber-600"></span>
+                        <span>Pending</span>
+                    </div>
+                </div>
+            </div>
+            <div class="px-6 pb-2.5">
+                <div class="py-4 text-2xl font-semibold">
                     <span>Add Guest</span>
                 </div>
                 <div class="w-full h-fit flex justify-around gap-2.5">
@@ -19,7 +42,7 @@
                         <input type="text" placeholder="Email" class="p-2 border-1 border-gray-300 outline-gray-300 rounded-lg w-full" id="email-field">
                     </form>
                     <div class="flex flex-col justify-center items-center">
-                        <input type="submit" value="Add" class="py-2 px-4 bg-blue-500 rounded-lg text-white" id="submit-button">
+                        <input type="submit" value="Add" class="py-2 px-4 bg-blue-500 rounded-lg text-white cursor-pointer" id="submit-button">
                     </div>
                 </div>
             </div>
