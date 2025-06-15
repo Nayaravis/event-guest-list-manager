@@ -27,6 +27,75 @@ titleInput.addEventListener("keydown", (event) => {
     }
 })
 
+function addGuest(event) {
+    const name = nameInput.value.trim()
+    const email = emailInput.value.trim()
+    const timestamp = new Date()
+    event.preventDefault()
+    if (guests.length <= 10) {
+        if (name !== "" && email !== "") {
+                guests.push({
+                id: guests.length + 1,
+                name: name,
+                email: email,
+                rsvp: null,
+                timestamp: `${timestamp.toLocaleTimeString('en-US', {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    second: undefined,
+                    hour12: true
+                })} ${timestamp.toDateString()}`
+            }) // add a new guest to the list
+
+            // clear the input fields
+            nameInput.value = ""
+            emailInput.value = ""
+
+            showGuests()
+        }
+    } else {
+        alert("You can only have 10 guests")
+    }
+}
+
+const form = document.getElementById("guest-form")
+
+const nameInput = form.elements["name-field"]
+nameInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        emailInput.focus() // move cursor to the next input field
+    }
+})
+
+const emailInput = form.elements["email-field"]
+emailInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        addGuest(event)
+        emailInput.blur() // free the cursor from the inputs
+    }
+})
+
+const submitButton = document.getElementById("submit-button")
+submitButton.addEventListener("click", addGuest)
+
+function updateRSVP(guestId, status) {
+    // Since reference to objects don't change, directly update the object using map
+    guests.map(guest => {
+        if (guest.id === guestId) {
+            guest.rsvp = status
+        }
+    })
+
+    showGuests() // update the displayed list
+}
+
+function deleteGuest(guestId) {
+    // return a new filtered list without the guest we've removed and replace the previous list's value with the filtered
+    guests = guests.filter(guest => guest.id !== guestId)
+
+    showGuests()
+}
+
 function showGuests() {
     // statistics
     const totalGuests = guests.length
@@ -122,74 +191,5 @@ function showGuests() {
     }
 }
 
-function updateRSVP(guestId, status) {
-    // Since reference to objects don't change, directly update the object using map
-    guests.map(guest => {
-        if (guest.id === guestId) {
-            guest.rsvp = status
-        }
-    })
-
-    showGuests() // update the displayed list
-}
-
-function deleteGuest(guestId) {
-    // return a new filtered list without the guest we've removed and replace the previous list's value with the filtered
-    guests = guests.filter(guest => guest.id !== guestId)
-
-    showGuests()
-}
-
 // initial display of the placeholder
 showGuests()
-
-function addGuest(event) {
-    const name = nameInput.value.trim()
-    const email = emailInput.value.trim()
-    const timestamp = new Date()
-    event.preventDefault()
-    if (guests.length <= 10) {
-        if (name !== "" && email !== "") {
-                guests.push({
-                id: guests.length + 1,
-                name: name,
-                email: email,
-                rsvp: null,
-                timestamp: `${timestamp.toLocaleTimeString('en-US', {
-                    hour: 'numeric',
-                    minute: '2-digit',
-                    second: undefined,
-                    hour12: true
-                })} ${timestamp.toDateString()}`
-            }) // add a new guest to the list
-
-            // clear the input fields
-            nameInput.value = ""
-            emailInput.value = ""
-
-            showGuests()
-        }
-    } else {
-        alert("You can only have 10 guests")
-    }
-}
-
-const form = document.getElementById("guest-form")
-
-const nameInput = form.elements["name-field"]
-nameInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-        emailInput.focus() // move cursor to the next input field
-    }
-})
-
-const emailInput = form.elements["email-field"]
-emailInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-        addGuest(event)
-        emailInput.blur() // free the cursor from the inputs
-    }
-})
-
-const submitButton = document.getElementById("submit-button")
-submitButton.addEventListener("click", addGuest)
