@@ -7,9 +7,15 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-red-50: oklch(97.1% 0.013 17.38);
     --color-red-100: oklch(93.6% 0.032 17.717);
+    --color-red-600: oklch(57.7% 0.245 27.325);
+    --color-red-700: oklch(50.5% 0.213 27.518);
     --color-red-800: oklch(44.4% 0.177 26.899);
+    --color-green-50: oklch(98.2% 0.018 155.826);
     --color-green-100: oklch(96.2% 0.044 156.743);
+    --color-green-600: oklch(62.7% 0.194 149.214);
+    --color-green-700: oklch(52.7% 0.154 150.069);
     --color-green-800: oklch(44.8% 0.119 151.328);
     --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-gray-100: oklch(96.7% 0.003 264.542);
@@ -32,6 +38,8 @@
     --font-weight-bold: 700;
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
+    --default-transition-duration: 150ms;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -182,6 +190,9 @@
   }
 }
 @layer utilities {
+  .sticky {
+    position: sticky;
+  }
   .container {
     width: 100%;
     @media (width >= 40rem) {
@@ -206,9 +217,6 @@
   .mt-1 {
     margin-top: calc(var(--spacing) * 1);
   }
-  .box-border {
-    box-sizing: border-box;
-  }
   .flex {
     display: flex;
   }
@@ -224,12 +232,6 @@
   .h-fit {
     height: fit-content;
   }
-  .h-full {
-    height: 100%;
-  }
-  .h-screen {
-    height: 100vh;
-  }
   .w-4xl {
     width: var(--container-4xl);
   }
@@ -238,9 +240,6 @@
   }
   .w-px {
     width: 1px;
-  }
-  .w-screen {
-    width: 100vw;
   }
   .border-collapse {
     border-collapse: collapse;
@@ -281,11 +280,8 @@
   .gap-3\.5 {
     gap: calc(var(--spacing) * 3.5);
   }
-  .overflow-scroll {
-    overflow: scroll;
-  }
-  .overflow-x-hidden {
-    overflow-x: hidden;
+  .overflow-hidden {
+    overflow: hidden;
   }
   .rounded-full {
     border-radius: calc(infinity * 1px);
@@ -303,6 +299,14 @@
   .border-1 {
     border-style: var(--tw-border-style);
     border-width: 1px;
+  }
+  .border-b {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
+  }
+  .border-b-2 {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 2px;
   }
   .border-gray-300 {
     border-color: var(--color-gray-300);
@@ -328,6 +332,12 @@
   .fill-gray-300 {
     fill: var(--color-gray-300);
   }
+  .fill-green-700 {
+    fill: var(--color-green-700);
+  }
+  .fill-red-700 {
+    fill: var(--color-red-700);
+  }
   .p-2 {
     padding: calc(var(--spacing) * 2);
   }
@@ -339,12 +349,6 @@
   }
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
-  }
-  .px-3 {
-    padding-inline: calc(var(--spacing) * 3);
-  }
-  .px-3\.5 {
-    padding-inline: calc(var(--spacing) * 3.5);
   }
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
@@ -360,9 +364,6 @@
   }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
-  }
-  .py-24 {
-    padding-block: calc(var(--spacing) * 24);
   }
   .pt-4 {
     padding-top: calc(var(--spacing) * 4);
@@ -425,6 +426,39 @@
   }
   .outline-gray-300 {
     outline-color: var(--color-gray-300);
+  }
+  .transition-colors {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .hover\:bg-green-50 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-green-50);
+      }
+    }
+  }
+  .hover\:bg-red-50 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-red-50);
+      }
+    }
+  }
+  .hover\:fill-green-600 {
+    &:hover {
+      @media (hover: hover) {
+        fill: var(--color-green-600);
+      }
+    }
+  }
+  .hover\:fill-red-600 {
+    &:hover {
+      @media (hover: hover) {
+        fill: var(--color-red-600);
+      }
+    }
   }
 }
 @property --tw-border-style {
