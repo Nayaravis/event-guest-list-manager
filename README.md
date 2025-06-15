@@ -1,1 +1,1 @@
-# event-guest-list-manager
+# Event Guest List Manager
